@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Master ChatGPT Prompts</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-dx94uxfI5Q3w0g5gUzOea3WfJDLbpl9ZnR6aMEjZlTgAhptZ6MLY5wNlMH7QbOtRZm4oJrqDnOy1cytmgLPF4g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      scroll-behavior: smooth;
+      background: #f9f9f9;
+    }
+
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #2e2bff, #8a2be2);
+      color: white;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .hero-content {
+      flex: 1;
+      min-width: 300px;
+      max-width: 600px;
+      padding: 1rem;
+      animation: fadeIn 1.5s ease;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    .cta-button {
+      padding: 0.75rem 1.5rem;
+      background: white;
+      color: #2e2bff;
+      border: none;
+      border-radius: 999px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .cta-button:hover {
+      background: #f0f0ff;
+    }
+
+    .hero-image {
+      flex: 1;
+      min-width: 300px;
+      max-width: 500px;
+      padding: 1rem;
+      text-align: center;
+      animation: fadeIn 2s ease;
+    }
+
+    .hero-image img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      will-change: transform;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .learn, .practice {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .learn h2, .practice h2 {
+      font-size: 2.2rem;
+      margin-bottom: 2rem;
+      color: #2e2bff;
+    }
+
+    .steps {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      gap: 2rem;
+    }
+
+    .step {
+      background: white;
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+      text-align: left;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
+    }
+
+    .step.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .step h3 {
+      color: #333;
+      margin-bottom: 0.5rem;
+    }
+
+    .step i {
+      color: #8a2be2;
+      margin-right: 10px;
+    }
+
+    .prompt-toggle {
+      margin-top: 1rem;
+      background-color: #f0f0ff;
+      padding: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .prompt-toggle:hover {
+      background-color: #e0e0ff;
+    }
+
+    .example {
+      display: none;
+      margin-top: 0.5rem;
+      padding: 1rem;
+      background: #f7f7f7;
+      border-left: 4px solid #8a2be2;
+      border-radius: 6px;
+      position: relative;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #8a2be2;
+      color: white;
+      border: none;
+      padding: 0.4rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+
+    .practice textarea {
+      width: 100%;
+      max-width: 600px;
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    .practice button {
+      background: #2e2bff;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .feedback {
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      .learn h2, .practice h2 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Master ChatGPT Prompts in Minutes</h1>
+      <p>Learn how to talk to AI like a pro and get the most out of every conversation.</p>
+      <a href="#learn" class="cta-button">Start Learning</a>
+    </div>
+    <div class="hero-image">
+      <img id="brainImage" src="https://res.cloudinary.com/dqvk7tkz7/image/upload/v1743935021/ma2jw31wp64q9ibqxcxw.png" alt="Brain illustration">
+    </div>
+  </section>
+
+  <section class="learn" id="learn">
+    <h2>Learn to Prompt</h2>
+    <div class="steps">
+      <div class="step">
+        <h3><i class="fas fa-puzzle-piece"></i> Step 1: Be Specific</h3>
+        <div class="prompt-toggle" onclick="toggleExample(this)">Show Example</div>
+        <div class="example">Instead of: "Tell me about dogs"<br>Try: "Explain the key differences between golden retrievers and labradors, and which is better for apartment living."
+          <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+        </div>
+      </div>
+      <div class="step">
+        <h3><i class="fas fa-user"></i> Step 2: Set a Role</h3>
+        <div class="prompt-toggle" onclick="toggleExample(this)">Show Example</div>
+        <div class="example">Prompt: "You are a nutritionist. Help me plan a week's meals under 1800 calories per day."
+          <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+        </div>
+      </div>
+      <div class="step">
+        <h3><i class="fas fa-sync-alt"></i> Step 3: Iterate</h3>
+        <div class="prompt-toggle" onclick="toggleExample(this)">Show Example</div>
+        <div class="example">Try: "Can you make it funnier?" or "Make it shorter and more formal."
+          <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+        </div>
+      </div>
+      <div class="step">
+        <h3><i class="fas fa-code"></i> Step 4: Use it for Coding</h3>
+        <div class="prompt-toggle" onclick="toggleExample(this)">Show Example</div>
+        <div class="example">Prompt: "Write a Python script that scrapes product prices from an e-commerce site using BeautifulSoup."
+          <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+        </div>
+      </div>
+      <div class="step">
+        <h3><i class="fas fa-book"></i> Step 5: Tell Stories</h3>
+        <div class="prompt-toggle" onclick="toggleExample(this)">Show Example</div>
+        <div class="example">Prompt: "Write a short bedtime story about a space-traveling bunny who teaches kids about the solar system."
+          <button class="copy-btn" onclick="copyToClipboard(this)">Copy</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="practice" id="practice">
+    <h2>Practice Your Prompt</h2>
+    <textarea id="userPrompt" rows="5" placeholder="Type your prompt here..."></textarea><br>
+    <button onclick="checkPrompt()">Check My Prompt</button>
+    <div class="feedback" id="feedback"></div>
+  </section>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.step').forEach(step => {
+      observer.observe(step);
+    });
+
+    function toggleExample(el) {
+      const example = el.nextElementSibling;
+      if (example.style.display === 'block') {
+        example.style.display = 'none';
+        el.textContent = 'Show Example';
+      } else {
+        example.style.display = 'block';
+        el.textContent = 'Hide Example';
+      }
+    }
+
+    function copyToClipboard(button) {
+      const text = button.parentElement.innerText.replace('Copy', '').trim();
+      navigator.clipboard.writeText(text).then(() => {
+        button.textContent = 'Copied!';
+        setTimeout(() => button.textContent = 'Copy', 2000);
+      });
+    }
+
+    const brainImage = document.getElementById('brainImage');
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      brainImage.style.transform = `translateY(${scrollY * 0.1}px) scale(${1 + scrollY * 0.0002})`;
+    });
+
+    function checkPrompt() {
+      const prompt = document.getElementById('userPrompt').value.trim();
+      const feedback = document.getElementById('feedback');
+      if (prompt.length < 10) {
+        feedback.textContent = 'Too short — try adding more detail!';
+        feedback.style.color = 'red';
+      } else if (!prompt.includes('?') && !prompt.includes('Explain') && !prompt.includes('Write')) {
+        feedback.textContent = 'Tip: Ask a specific question or give a clear instruction.';
+        feedback.style.color = 'orange';
+      } else {
+        feedback.textContent = 'Looks like a great prompt! 🎉';
+        feedback.style.color = 'green';
+      }
+    }
+  </script>
+</body>
+</html>
